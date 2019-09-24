@@ -1,22 +1,28 @@
 import java.util.HashMap;
 
-public class CanIWin {
+public class CodeITSuisseCanIWin {
 
-    public static boolean canIWin(int maxChooseableInt, int desiredTotal) {
+    public static int canIWin(int maxChooseableInt, int desiredTotal) {
 
-        if (maxChooseableInt >= desiredTotal) return true;
+        if (maxChooseableInt >= desiredTotal) return 0;
 
         int sum = maxChooseableInt * (maxChooseableInt + 1) / 2;
         if(sum  < desiredTotal) {
-            return false;
+            return -1;
         }
 
         HashMap<Integer, Boolean> memo = new HashMap<>();
-        return canPlayerWin(maxChooseableInt, desiredTotal, 0, memo);
+        int moves = 0;
+        if (canPlayerWin(maxChooseableInt, desiredTotal, 0, memo, moves)) {
+            return moves/2;
+        } else {
+            return -1;
+        }
 
     }
 
-    private static boolean canPlayerWin(int maxChooseableInt, int desiredTotal, int chosenState, HashMap<Integer, Boolean> memo) {
+    private static boolean canPlayerWin(int maxChooseableInt, int desiredTotal, int chosenState, HashMap<Integer, Boolean> memo, int moves) {
+        moves++;
         if(memo.containsKey(chosenState)) {
             return memo.get(chosenState);
         }
@@ -26,7 +32,7 @@ public class CanIWin {
             boolean isCurrChosen = (curr & chosenState) != 0;
             if (!isCurrChosen) {
                 int newChosenState = curr | chosenState;
-                if(desiredTotal <= i + 1 || !canPlayerWin(maxChooseableInt, desiredTotal - (i + 1), newChosenState, memo)){
+                if(desiredTotal <= i + 1 || !canPlayerWin(maxChooseableInt, desiredTotal - (i + 1), newChosenState, memo, moves)){
                     memo.put(chosenState, true);
                     return true;
                 }
