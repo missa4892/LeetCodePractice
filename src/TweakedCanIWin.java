@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class CodeITSuisseCanIWin {
+public class TweakedCanIWin {
 
     public static int canIWin(int maxChooseableInt, int desiredTotal) {
 
