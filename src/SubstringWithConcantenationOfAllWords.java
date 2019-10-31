@@ -48,7 +48,7 @@ public class SubstringWithConcantenationOfAllWords {
             int endIndex = startIndex + sizeOfWord;
             Map<String, Integer> tempMap = new HashMap<>(wordsMap);
 
-                        while(endIndex <= totalSizeOfWords){
+            while(endIndex <= totalSizeOfWords){
                 String subsubString = inputSubstring.substring(startIndex, endIndex);
                 if(tempMap.containsKey(subsubString)){
                     int count = tempMap.get(subsubString);

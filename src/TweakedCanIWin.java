@@ -2,6 +2,8 @@ import java.util.HashMap;
 
 public class TweakedCanIWin {
 
+    static int moves = 0;
+
     public static int canIWin(int maxChooseableInt, int desiredTotal) {
 
         if (maxChooseableInt >= desiredTotal) return 0;
@@ -12,8 +14,7 @@ public class TweakedCanIWin {
         }
 
         HashMap<Integer, Boolean> memo = new HashMap<>();
-        int moves = 0;
-        if (canPlayerWin(maxChooseableInt, desiredTotal, 0, memo, moves)) {
+        if (canPlayerWin(maxChooseableInt, desiredTotal, 0, memo)) {
             return moves/2;
         } else {
             return -1;
@@ -21,7 +22,7 @@ public class TweakedCanIWin {
 
     }
 
-    private static boolean canPlayerWin(int maxChooseableInt, int desiredTotal, int chosenState, HashMap<Integer, Boolean> memo, int moves) {
+    private static boolean canPlayerWin(int maxChooseableInt, int desiredTotal, int chosenState, HashMap<Integer, Boolean> memo) {
         moves++;
         if(memo.containsKey(chosenState)) {
             return memo.get(chosenState);
@@ -32,7 +33,7 @@ public class TweakedCanIWin {
             boolean isCurrChosen = (curr & chosenState) != 0;
             if (!isCurrChosen) {
                 int newChosenState = curr | chosenState;
-                if(desiredTotal <= i + 1 || !canPlayerWin(maxChooseableInt, desiredTotal - (i + 1), newChosenState, memo, moves)){
+                if(desiredTotal <= i + 1 || !canPlayerWin(maxChooseableInt, desiredTotal - (i + 1), newChosenState, memo)){
                     memo.put(chosenState, true);
                     return true;
                 }

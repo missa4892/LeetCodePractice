@@ -88,6 +88,23 @@ class WordBreakIITest {
     }
 
     @Test
+    void shouldReturnWordsFromDictionaryForWordBreakSolution2() {
+
+        ArrayList<String> dictionary = new ArrayList<>();
+        dictionary.add("apple");
+        dictionary.add("pen");
+        dictionary.add("applepen");
+        dictionary.add("pine");
+        dictionary.add("pineapple");
+
+        List<String> result = spacesBetweenWords.wordBreak("pineapplepenapple", dictionary);
+
+        List<String> expected = Arrays.asList("pine apple pen apple", "pineapple pen apple", "pine applepen apple");
+
+        assertThat(listEqualsIgnoreOrder(result, expected), Matchers.is(true));
+    }
+
+    @Test
     void shouldWorkForLongInputsWithWordBreakSolution() {
         ArrayList<String> dictionary = new ArrayList<>();
         dictionary.add("a");
