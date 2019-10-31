@@ -27,7 +27,7 @@ public class SumMinimumElementsofSubarrays {
         int result = 0;
 
         for (int i = 0; i < A.length; i++) {
-            result += A[i] * left[i] * right[i];
+            result = result + A[i] * left[i] * right[i];
         }
 
         return result;
@@ -39,7 +39,7 @@ public class SumMinimumElementsofSubarrays {
         for (int i = A.length - 1; i >= 0; i--) {
             int count = 1;
 
-            while (!s2.isEmpty() && s2.peek().key > A[i]) {
+            while (!s2.isEmpty() && s2.peek().key >= A[i]) {
                 count += s2.peek().value;
                 s2.pop();
             }
@@ -55,7 +55,7 @@ public class SumMinimumElementsofSubarrays {
         for (int i = 0; i < A.length; i++) {
             int count = 1;
 
-            while (!s1.isEmpty() && (s1.peek().key > A[i])) {
+            while (!s1.isEmpty() && s1.peek().key > A[i]) {
                 count += s1.peek().value;
                 s1.pop();
             }
