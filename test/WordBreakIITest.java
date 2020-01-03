@@ -1,4 +1,3 @@
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -6,7 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class WordBreakIITest {
 
@@ -26,7 +25,7 @@ class WordBreakIITest {
 
         List<String> expected = Arrays.asList("cats and dog", "cat sand dog");
 
-        assertThat(listEqualsIgnoreOrder(result, expected), Matchers.is(true));
+        assertTrue(listEqualsIgnoreOrder(result, expected));
     }
 
     @Test
@@ -43,7 +42,7 @@ class WordBreakIITest {
 
         List<String> expected = new ArrayList<>();
 
-        assertThat(listEqualsIgnoreOrder(result, expected), Matchers.is(true));
+        assertTrue(listEqualsIgnoreOrder(result, expected));
     }
 
     @Test
@@ -67,7 +66,7 @@ class WordBreakIITest {
 
         List<String> expected = new ArrayList<>();
 
-        assertThat(listEqualsIgnoreOrder(result, expected), Matchers.is(true));
+        assertTrue(listEqualsIgnoreOrder(result, expected));
     }
 
     @Test
@@ -84,7 +83,7 @@ class WordBreakIITest {
 
         List<String> expected = Arrays.asList("cats and dog", "cat sand dog");
 
-        assertThat(listEqualsIgnoreOrder(result, expected), Matchers.is(true));
+         assertTrue(listEqualsIgnoreOrder(result, expected));
     }
 
     @Test
@@ -101,7 +100,7 @@ class WordBreakIITest {
 
         List<String> expected = Arrays.asList("pine apple pen apple", "pineapple pen apple", "pine applepen apple");
 
-        assertThat(listEqualsIgnoreOrder(result, expected), Matchers.is(true));
+         assertTrue(listEqualsIgnoreOrder(result, expected));
     }
 
     @Test
@@ -124,7 +123,7 @@ class WordBreakIITest {
 
         List<String> expected = new ArrayList<>();
 
-        assertThat(listEqualsIgnoreOrder(result, expected), Matchers.is(true));
+         assertTrue(listEqualsIgnoreOrder(result, expected));
     }
 
     public static <T> boolean listEqualsIgnoreOrder(List<T> list1, List<T> list2) {
