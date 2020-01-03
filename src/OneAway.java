@@ -10,7 +10,51 @@ public class OneAway {
           cat, at
      */
 
-    private static boolean isOneAway(String first, String second) {
+    public static boolean isOneAway(String first, String second) {
+        int editsCount = 0;
+        int firstSize = first.length();
+        int secondSize = second.length();
+
+        if (Math.abs(firstSize - secondSize) > 1) {
+            return false;
+        }
+
+        int i = 0;
+        int j = 0;
+
+        while (i < firstSize && j < secondSize) {
+            if (first.charAt(i) != second.charAt(j)) {
+
+                if (editsCount == 1) return false;
+
+                if (firstSize > secondSize) {
+                    i++;
+                } else if (firstSize < secondSize) {
+                    j++;
+                } else {
+                    i++;
+                    j++;
+                }
+
+                editsCount++;
+            } else {
+                i++;
+                j++;
+            }
+        }
+
+        if (i < firstSize || j < secondSize) {
+            editsCount++;
+        }
+
+        if (editsCount == 1) {
+            return true;
+        }
+        return false;
+    }
+
+
+    private static boolean isOneAway1(String first, String second) {
 
         String temp = second;
 
