@@ -18,4 +18,9 @@ class LongestValidParenthesesTest {
         assertEquals(6, result);
     }
 
+    @Test
+    void test3() {
+        int result = LongestValidParentheses.longestValidParentheses(")((");
+        assertEquals(6, result);
+    }
 }
