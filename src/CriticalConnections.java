@@ -40,7 +40,7 @@ public class CriticalConnections {
                 dfs(child, curr, graph, visited, lowestPossibleReach, ids, result);
                 lowestPossibleReach[curr] = Math.min(lowestPossibleReach[curr], lowestPossibleReach[child]);
 
-                if (lowestPossibleReach[child] == child) {
+                if (lowestPossibleReach[child] == ids[child]) {
                     result.add(Arrays.asList(curr, child));
                 }
             } else {
